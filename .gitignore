@@ -1,6 +1,5 @@
-echo "__pycache__/
+__pycache__/
 *.pyc
 .env
 venv/
-*.pkl
-.DS_Store" > .gitignore
+.DS_Store
