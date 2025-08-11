@@ -1,5 +1,5 @@
 import pandas as pd
-<<<<<<< HEAD
+
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -10,7 +10,7 @@ file_path = r"C:\Users\ASUS\Desktop\iris-plant-website\iris.csv"
 df = pd.read_csv(file_path)
 
 # Rename columns for consistency
-=======
+
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score
@@ -21,7 +21,7 @@ file_path = r"C:\Users\ASUS\Desktop\iris-plant-website\iris.csv"
 df = pd.read_csv(file_path)
 
 # Rename columns to consistent names (if needed)
->>>>>>> 8827b1a (Save all current changes before pulling)
+
 df.rename(columns={
     'SepalLengthCm': 'sepal_length',
     'SepalWidthCm': 'sepal_width',
@@ -34,7 +34,7 @@ df.rename(columns={
 X = df[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']]
 y = df['species']
 
-<<<<<<< HEAD
+
 # Split dataset
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -49,7 +49,7 @@ print(f"Test accuracy: {accuracy_score(y_test, y_pred):.4f}")
 # Save the model
 joblib.dump(model, "iris_random_forest_model.joblib")
 print("Model saved as iris_random_forest_model.joblib")
-=======
+
 # Split dataset into train and test
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y)
@@ -71,4 +71,3 @@ print("\nClassification Report:\n", classification_report(y_test, y_pred))
 model_filename = "iris_random_forest_model.joblib"
 joblib.dump(model, model_filename)
 print(f"\nModel saved as {model_filename}")
->>>>>>> 8827b1a (Save all current changes before pulling)
