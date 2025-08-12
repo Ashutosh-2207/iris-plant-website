@@ -1,11 +1,5 @@
-Flask
-pandas
-numpy
-scikit-learn
-matplotlib
-seaborn
-joblib
-<<<<<<< HEAD
-=======
 streamlit
->>>>>>> 8827b1a (Save all current changes before pulling)
+pandas
+scikit-learn
+joblib
+numpy
