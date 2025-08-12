@@ -1,39 +1,19 @@
 import streamlit as st
-import pandas as pd
 import joblib
-import os
+import numpy as np
 
 # Load model
-model_path = "iris_random_forest_model.joblib"
-if not os.path.exists(model_path):
-    st.error(f"Model file not found at {model_path}. Please run train_model.py first.")
-    st.stop()
+model = joblib.load("iris_model.pkl")
 
-model = joblib.load(model_path)
-
-st.title("🌸 Iris Species Predictor")
-
-st.write("""
-Enter the measurements of the iris flower below and click **Predict** to see the species.
-""")
+st.title("Iris Flower Prediction App")
 
 # Input fields
-sepal_length = st.number_input("Sepal Length (cm)", min_value=0.0, step=0.1)
-sepal_width = st.number_input("Sepal Width (cm)", min_value=0.0, step=0.1)
-petal_length = st.number_input("Petal Length (cm)", min_value=0.0, step=0.1)
-petal_width = st.number_input("Petal Width (cm)", min_value=0.0, step=0.1)
+sepal_length = st.number_input("Sepal Length", 0.0, 10.0, 5.1)
+sepal_width = st.number_input("Sepal Width", 0.0, 10.0, 3.5)
+petal_length = st.number_input("Petal Length", 0.0, 10.0, 1.4)
+petal_width = st.number_input("Petal Width", 0.0, 10.0, 0.2)
 
 if st.button("Predict"):
-    input_data = pd.DataFrame([{
-        'sepal_length': sepal_length,
-        'sepal_width': sepal_width,
-        'petal_length': petal_length,
-        'petal_width': petal_width
-    }])
-    
-    prediction = model.predict(input_data)[0]
-    
-    st.success(f"Predicted species: **{prediction}**")
-
-st.markdown("---")
-st.markdown("Made with ❤️ using **Streamlit** and **scikit-learn**")
+    features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
+    prediction = model.predict(features)[0]
+    st.success(f"Predicted Class: {prediction}")
